@@ -1,7 +1,7 @@
 
-# gobalancerr - Simple Load Balancer in Go 🐹⚖️
+# GoBalancer - Simple Load Balancer in Go 🐹⚖️
 
-**gobalancerr** is a simple and minimal load balancer written in Go. It implements the **round-robin** load balancing algorithm to distribute traffic across multiple backend servers. This is a learning project to understand the basics of load balancing, concurrency, and HTTP request forwarding in Go.
+**GoBalancer** is a simple and minimal load balancer written in Go. It implements the **round-robin** load balancing algorithm to distribute traffic across multiple backend servers. This is a learning project to understand the basics of load balancing, concurrency, and HTTP request forwarding in Go.
 
 ## Features
 - **Round-robin load balancing**: Requests are distributed evenly across backend servers in a circular fashion.
