@@ -1,0 +1,13 @@
+{
+    "backends": [
+      {
+        "url": "http://backend1.example.com",
+        "alive": true
+      },
+      {
+        "url": "http://backend2.example.com",
+        "alive": false
+      }
+    ]
+  }
+  

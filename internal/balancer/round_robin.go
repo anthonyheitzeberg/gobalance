@@ -1,26 +1,20 @@
 package balancer
 
 import (
+	"gobalance/internal/shared"
 	"net/http"
 	"sync"
 )
 
-// Backend represents a single backend server
-type Backend struct {
-	URL string
-	Alive bool
-	Weight int
-}
-
 // RoundRobinBalancer implements the round-robin load balancing algorithm
 type RoundRobinBalancer struct {
-	backends []*Backend
+	backends []*shared.Backend
 	current int
 	mutex sync.Mutex
 }
 
 // NewRoundRobinBalancer initializes a new RoundRobinBalancer
-func NewRoundRobinBalancer(backends []*Backend) *RoundRobinBalancer {
+func NewRoundRobinBalancer(backends []*shared.Backend) *RoundRobinBalancer {
 	return &RoundRobinBalancer{
 		backends: backends,
 		current: 0,
@@ -28,7 +22,7 @@ func NewRoundRobinBalancer(backends []*Backend) *RoundRobinBalancer {
 }
 
 // NextBackend returns the next backend to which traffic should be forwarded
-func (b *RoundRobinBalancer) NextBackend() *Backend {
+func (b *RoundRobinBalancer) NextBackend() *shared.Backend {
 	b.mutex.Lock()
 	defer b.mutex.Unlock()
 
