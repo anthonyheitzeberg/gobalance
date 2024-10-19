@@ -1,8 +1,8 @@
 package main
 
 import (
-	"gobalance/internal/balancer"
-	"gobalance/internal/config"
+	"gobalancer/internal/balancer"
+	"gobalancer/internal/config"
 	"log"
 	"net/http"
 	"os"
@@ -40,7 +40,7 @@ func main() {
 		// Add request forwarding logic here
 	})
 
-    log.Printf("✅ GoBalance is running on port %s...\n", port)
+    log.Printf("✅ GoBalancer is running on port %s...\n", port)
     if err := http.ListenAndServe(":"+port, nil); err != nil {
         log.Fatalf("Error starting server: %v", err)
     }

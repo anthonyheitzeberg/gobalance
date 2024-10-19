@@ -1,7 +1,7 @@
 package balancer
 
 import (
-	"gobalance/internal/shared"
+	"gobalancer/internal/shared"
 	"net/http"
 	"sync"
 )

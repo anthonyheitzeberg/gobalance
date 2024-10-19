@@ -1,4 +1,4 @@
-module gobalance
+module gobalancer
 
 go 1.23
 

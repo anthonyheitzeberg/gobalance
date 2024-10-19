@@ -2,7 +2,7 @@ package config
 
 import (
 	"encoding/json"
-	"gobalance/internal/shared"
+	"gobalancer/internal/shared"
 	"io/ioutil"
 	"os"
 )
