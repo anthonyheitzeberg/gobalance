@@ -1,22 +1,28 @@
 package main
 
 import (
-	"fmt"
+	"gobalance/internal/balancer"
 	"log"
 	"net/http"
 )
 
-func handler(w http.ResponseWriter, r *http.Request) {
-	fmt.Fprintf(w, "Welcome to GoBalance Load Balancer!")
-}
-
 func main() {
-	http.HandleFunc("/", handler)
-
-	port := ":8080"
-	log.Printf("GoBalance is running on port %s...\n", port)
-
-	if err := http.ListenAndServe(port, nil); err != nil {
-		log.Fatalf("Error starting server: %v", err)
+	backends := []*balancer.Backend{
+		{URL: "http://localhost:8081", Alive: true},
+		{URL: "http://localhost:8082", Alive: true},
 	}
+
+	balancer := balancer.NewRoundRobinBalancer(backends)
+
+	// Set up a handler that uses the balancer to forward requests
+	http.HandleFunc("/", func(w http.ResponseWriter, r *http.Request) {
+		balancer.ForwardRequest(w, r)
+	})
+
+	// Start the load balancer server
+    port := ":8080"
+    log.Printf("GoBalance is running on port %s...\n", port)
+    if err := http.ListenAndServe(port, nil); err != nil {
+        log.Fatalf("Error starting server: %v", err)
+    }
 }
